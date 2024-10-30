@@ -39,6 +39,9 @@ const Navbar = async () => {
                             <button type='submit'>
                                 <span>Login</span>
                             </button>
+                            <Link href={"/login"}>
+                                Login Form
+                            </Link>
                         </form>
                     )}
                 </div>
