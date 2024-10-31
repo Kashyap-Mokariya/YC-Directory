@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Github, Mail, Lock } from "lucide-react"
 import { signIn } from "next-auth/react" // Import signIn from next-auth
 
+
 export function AuthPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [focusedEmail, setFocusedEmail] = useState(false)
@@ -16,7 +17,7 @@ export function AuthPage() {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
 
-  const handleSignIn = async (e: React.FormEvent) => {
+  const handleSignInGithub = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     await signIn("github", { redirectTo: "/" })
@@ -87,7 +88,7 @@ export function AuthPage() {
                     Password
                   </label>
                 </div>
-                <Button className="w-full bg-black hover:bg-gray-800" disabled={isLoading}>
+                <Button className="w-full bg-black hover:bg-gray-800 text-white" disabled={isLoading}>
                   {isLoading ? "Loading..." : "Sign In"}
                 </Button>
               </div>
@@ -128,7 +129,7 @@ export function AuthPage() {
                   {isLoading ? "Loading..." : "Google"}
                 </Button>
               </form>
-              <form onSubmit={handleSignIn}>
+              <form onSubmit={handleSignInGithub}>
                 <Button variant="outline" className="w-full" type="submit" disabled={isLoading}>
                   <Github className="mr-2 h-4 w-4" />
                   {isLoading ? "Loading..." : "GitHub"}
