@@ -32,17 +32,11 @@ const Navbar = async () => {
                             </Link>
                         </>
                     ) : (
-                        <form action={async () => {
-                            "use server"
-                            await signIn('github')
-                        }}>
-                            <button type='submit'>
+                        <button>
+                            <Link href="/login">
                                 <span>Login</span>
-                            </button>
-                            <Link href={"/login"}>
-                                Login Form
                             </Link>
-                        </form>
+                        </button>
                     )}
                 </div>
             </nav>
