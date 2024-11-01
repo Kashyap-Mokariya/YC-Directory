@@ -4,10 +4,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/button'
+import { Author, Startup } from '@/sanity/types'
 
-const StartupCard = ({ post }: { post: StartupCardType }) => {
+export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author }
 
-  const { _createdAt, views, author: { _id: authorId, name }, category, title, _id, image, description } = post
+const StartupCard = ({ post }: { post: StartupTypeCard }) => {
+
+  const { _createdAt, views, category, author, title, _id, image, description } = post
+  const authorId = author?._id;
+  const authorName = author?.name;
 
   return (
     <li className='startup-card group'>
@@ -25,7 +30,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
         <div className="flex-1">
           <Link href={`/user/${authorId}`}>
             <p className='text-16-medium line-clamp-1' >
-              {name}
+              {authorName}
             </p>
           </Link>
           <Link href={`/startup/${_id}`}>
@@ -43,13 +48,13 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
       <Link href={`/user/${authorId}`}>
         <p>
           {description}
-          <Image src={image} alt="img" width={1080} height={1080} className='startup-card_img' />
+          <Image src={image || "https://placehold.co/1080x1080"} alt="img" width={1080} height={1080} className='startup-card_img mt-3' />
           {/* <img src={image} alt="img" className='startup-card_img' /> This is also acceptable (without optimization) */}
         </p>
       </Link>
 
       <div className='flex-between gap-3 mt-5'>
-        <Link href={`/?query=${category.toLowerCase()}`}>
+        <Link href={`/?query=${category?.toLowerCase()}`}>
           <p className='text-16-medium'>
             {category}
           </p>

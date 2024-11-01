@@ -40,6 +40,10 @@
         @apply font-semibold text-[30px] text-black;
     }
 
+    .text-26-bold {
+        @apply font-bold text-[26px] text-black;
+    }
+    
     .text-26-semibold {
         @apply font-semibold text-[26px] text-black;
     }
@@ -54,6 +58,10 @@
 
     .text-16-medium {
         @apply font-medium text-[16px] text-black;
+    }
+    
+    .text-16-semibold {
+        @apply font-semibold text-[16px] text-black;
     }
 
     .text-14-normal {
