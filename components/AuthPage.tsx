@@ -5,14 +5,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Github, Mail, Lock } from "lucide-react"
-import { signIn } from "next-auth/react" // Import signIn from next-auth
-
+import { signIn } from "next-auth/react"
 
 export function AuthPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [focusedEmail, setFocusedEmail] = useState(false)
-  const [focusedPassword, setFocusedPassword] = useState(false)
-  const [focusedConfirmPassword, setFocusedConfirmPassword] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -23,7 +19,7 @@ export function AuthPage() {
     await signIn("github", { redirectTo: "/" })
     setIsLoading(false)
   }
-  
+
   const handleSignInGoogle = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
@@ -52,17 +48,13 @@ export function AuthPage() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    onFocus={() => setFocusedEmail(true)}
-                    onBlur={() => setFocusedEmail(false)}
                     className="pl-10 pt-6 pb-2"
+                    placeholder=" "
                   />
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
                   <label
                     htmlFor="email"
-                    className={`absolute left-10 transition-all duration-200 ${focusedEmail || email
-                      ? 'top-1 text-xs text-gray-500'
-                      : 'top-1/2 -translate-y-1/2 text-gray-500'
-                      }`}
+                    className="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 transition-all duration-200 pointer-events-none"
                   >
                     Email
                   </label>
@@ -73,17 +65,13 @@ export function AuthPage() {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    onFocus={() => setFocusedPassword(true)}
-                    onBlur={() => setFocusedPassword(false)}
                     className="pl-10 pt-6 pb-2"
+                    placeholder=" "
                   />
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
                   <label
                     htmlFor="password"
-                    className={`absolute left-10 transition-all duration-200 ${focusedPassword || password
-                      ? 'top-1 text-xs text-gray-500'
-                      : 'top-1/2 -translate-y-1/2 text-gray-500'
-                      }`}
+                    className="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 transition-all duration-200 pointer-events-none"
                   >
                     Password
                   </label>
@@ -94,8 +82,62 @@ export function AuthPage() {
               </div>
             </TabsContent>
             <TabsContent value="register" className="space-y-6">
-              {/* Register Tab Content */}
-              {/* Similar to Login content */}
+              <div className="space-y-4">
+                <div className="relative">
+                  <Input
+                    id="register-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="pl-10 pt-6 pb-2"
+                    placeholder=" "
+                  />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                  <label
+                    htmlFor="register-email"
+                    className="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 transition-all duration-200 pointer-events-none"
+                  >
+                    Email
+                  </label>
+                </div>
+                <div className="relative">
+                  <Input
+                    id="register-password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="pl-10 pt-6 pb-2"
+                    placeholder=" "
+                  />
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                  <label
+                    htmlFor="register-password"
+                    className="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 transition-all duration-200 pointer-events-none"
+                  >
+                    Password
+                  </label>
+                </div>
+                <div className="relative">
+                  <Input
+                    id="confirm-password"
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="pl-10 pt-6 pb-2"
+                    placeholder=" "
+                  />
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                  <label
+                    htmlFor="confirm-password"
+                    className="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 transition-all duration-200 pointer-events-none"
+                  >
+                    Confirm Password
+                  </label>
+                </div>
+                <Button className="w-full bg-black hover:bg-gray-800 text-white" disabled={isLoading}>
+                  {isLoading ? "Loading..." : "Register"}
+                </Button>
+              </div>
             </TabsContent>
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
@@ -139,6 +181,13 @@ export function AuthPage() {
           </Tabs>
         </div>
       </div>
+      <style jsx global>{`
+        input:not(:placeholder-shown) + label,
+        input:focus + label {
+          transform: translate(-0.25rem, -1.5rem) scale(0.8);
+          color: #d53f8c;
+        }
+      `}</style>
     </div>
   )
 }
