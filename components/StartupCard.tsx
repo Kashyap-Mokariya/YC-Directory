@@ -16,7 +16,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
 
   return (
     <li className='startup-card group'>
-      <div className="flex-between">
+      <div className="flex-between" suppressHydrationWarning>
         <p>
           {formatDate(_createdAt)}
         </p>
