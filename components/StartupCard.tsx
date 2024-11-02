@@ -5,6 +5,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/button'
 import { Author, Startup } from '@/sanity/types'
+import DetailsButton from './ui/details-button'
 
 export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author }
 
@@ -59,11 +60,11 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
             {category}
           </p>
         </Link>
-        <Button className='startup-card_btn' asChild>
+        <DetailsButton>
           <Link href={`/startup/${_id}`}>
             Details
           </Link>
-        </Button>
+        </DetailsButton>
       </div>
     </li>
   )
