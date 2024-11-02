@@ -45,7 +45,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         </Link>
       </div>
 
-      <Link href={`/user/${authorId}`}>
+      <Link href={`/startup/${_id}`}>
         <p>
           {description}
           <Image src={image || "https://placehold.co/1080x1080"} alt="img" width={1080} height={1080} className='startup-card_img mt-3' />
@@ -60,7 +60,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
           </p>
         </Link>
         <Button className='startup-card_btn' asChild>
-          <Link href={`/user/${authorId}`}>
+          <Link href={`/startup/${_id}`}>
             Details
           </Link>
         </Button>

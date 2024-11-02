@@ -1,6 +1,7 @@
 import { auth, signIn, signOut } from '@/auth'
 import Image from 'next/image'
 import Link from 'next/link'
+import LoginButton from './ui/login-button'
 
 const Navbar = async () => {
 
@@ -32,11 +33,11 @@ const Navbar = async () => {
                             </Link>
                         </>
                     ) : (
-                        <button>
+                        <LoginButton>
                             <Link href="/login">
                                 <span>Login</span>
                             </Link>
-                        </button>
+                        </LoginButton>
                     )}
                 </div>
             </nav>
