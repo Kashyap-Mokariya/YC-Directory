@@ -19,15 +19,15 @@ const LoginButton: React.FC<LoginButtonProps> = ({ children }) => {
 
 const StyledWrapper = styled.div`
   button {
-   padding: 5px 15px;
+   padding: 5px 13px;
    border: unset;
    border-radius: 15px;
    color: #212121;
    z-index: 1;
    background: #e8e8e8;
    position: relative;
-   font-weight: 800;
-   font-size: 17px;
+   font-weight: 600;
+   font-size: 15px;
    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
    transition: all 250ms;
