@@ -11,12 +11,12 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  experimental:{
-    // ppr: 'incremental',
+  experimental: {
+    after: true,
   },
-  devIndicators:{
+  devIndicators: {
     appIsrStatus: true,
-    buildActivity:true,
+    buildActivity: true,
     buildActivityPosition: 'bottom-right',
   }
 };
