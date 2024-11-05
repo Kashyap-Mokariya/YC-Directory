@@ -144,6 +144,7 @@ export type Startup = {
   category?: string;
   image?: string;
   pitch?: string;
+  userVisits?: Array<string>;
 };
 
 export type Slug = {

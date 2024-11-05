@@ -47,5 +47,12 @@ export const startup = defineType({
             name: "pitch",
             type: "markdown",
         }),
+        defineField({
+            name: "userVisits",
+            type: "array",
+            of: [{
+                type: "string",
+            }]
+        }),
     ]
 })

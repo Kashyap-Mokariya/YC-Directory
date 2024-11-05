@@ -4,21 +4,32 @@ import { client } from '@/sanity/lib/client'
 import { STARTUP_VIEWS_QUERY } from '@/sanity/lib/queries'
 import { unstable_after as after } from 'next/server'
 import { writeClient } from '@/sanity/lib/write-client'
+import { auth } from '@/auth'
 
 const View = async ({ id }: { id: string }) => {
 
-    const { views: totalViews } = await client.withConfig({ useCdn: false }).fetch(STARTUP_VIEWS_QUERY, { id })
+    const session = await auth()
+    const userName = session?.user?.name
+    console.log(userName)
+
+    const { views: totalViews, userVisits } = await client.withConfig({ useCdn: false }).fetch(STARTUP_VIEWS_QUERY, { id })
+
+    const hasUserVisited = userName && userVisits?.includes(userName);
+
+    if (!hasUserVisited && userName) {
+        after(async () => {
+            // Update views and add user ID to the visited list
+            await writeClient
+                .patch(id)
+                .set({ views: totalViews + 1 })
+                .insert('after', 'userVisits[-1]', [userName])  // Ensure 'userVisits' is an array field in Sanity
+                .commit()
+        })
+    }
 
     const getViewsText = (count: number) => {
         return count === 1 ? 'view' : 'views'
     }
-
-    after(async () => {
-        await writeClient
-            .patch(id)
-            .set({ views: totalViews + 1 })
-            .commit()
-    })
 
     return (
         <div className='view-container'>
