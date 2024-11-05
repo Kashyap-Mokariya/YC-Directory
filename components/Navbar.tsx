@@ -33,11 +33,11 @@ const Navbar = async () => {
                             </Link>
                         </>
                     ) : (
-                        <LoginButton>
-                            <Link href="/login">
+                        <Link href="/login">
+                            <LoginButton>
                                 <span>Login</span>
-                            </Link>
-                        </LoginButton>
+                            </LoginButton>
+                        </Link>
                     )}
                 </div>
             </nav>

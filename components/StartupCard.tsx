@@ -3,7 +3,6 @@ import { EyeIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Button } from './ui/button'
 import { Author, Startup } from '@/sanity/types'
 import DetailsButton from './ui/details-button'
 
@@ -60,11 +59,11 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
             {category}
           </p>
         </Link>
-        <DetailsButton>
-          <Link href={`/startup/${_id}`}>
+        <Link href={`/startup/${_id}`}>
+          <DetailsButton>
             Details
-          </Link>
-        </DetailsButton>
+          </DetailsButton>
+        </Link>
       </div>
     </li>
   )
