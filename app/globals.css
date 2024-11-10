@@ -179,11 +179,11 @@
 
     /* startupform */
     .startup-form {
-        @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-6;
+        @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-[80px];
     }
 
     .startup-form_label {
-        @apply font-bold text-[18px] text-black uppercase;
+        @apply font-bold text-[16px] text-black uppercase;
     }
 
     .startup-form_input {
