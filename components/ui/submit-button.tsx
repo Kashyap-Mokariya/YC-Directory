@@ -10,6 +10,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ children, isPending }) => {
     return (
         <StyledWrapper>
             <button type='submit' className="comic-button ml-[160px]" disabled = {isPending}>
+                {isPending ? "Submitting" : "Submit"}
                 {children}
             </button>
         </StyledWrapper>

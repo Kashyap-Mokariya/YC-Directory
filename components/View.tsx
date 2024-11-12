@@ -9,20 +9,20 @@ import { auth } from '@/auth'
 const View = async ({ id }: { id: string }) => {
 
     const session = await auth()
-    const userName = session?.user?.name
-    console.log(userName)
+    const userId = session?.id
+    console.log(userId)
 
     const { views: totalViews, userVisits } = await client.withConfig({ useCdn: false }).fetch(STARTUP_VIEWS_QUERY, { id })
 
-    const hasUserVisited = userName && userVisits?.includes(userName);
+    const hasUserVisited = userId && userVisits?.includes(userId);
 
-    if (!hasUserVisited && userName) {
+    if (!hasUserVisited && userId) {
         after(async () => {
             // Update views and add user ID to the visited list
             await writeClient
                 .patch(id)
                 .set({ views: totalViews + 1 })
-                .insert('after', 'userVisits[-1]', [userName])  // Ensure 'userVisits' is an array field in Sanity
+                .insert('after', 'userVisits[-1]', [userId])  // Ensure 'userVisits' is an array field in Sanity
                 .commit()
         })
     }
