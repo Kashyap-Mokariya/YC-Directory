@@ -13,6 +13,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
   const { _createdAt, views, category, author, title, _id, image, description } = post
   const authorId = author?._id;
   const authorName = author?.name;
+  const authorImage = author?.image;
 
   return (
     <li className='startup-card group'>
@@ -41,7 +42,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         </div>
 
         <Link href={`/user/${authorId}`}>
-          <Image src={"https://placehold.co/600x400"} alt="placeholder" width={48} height={48} className='rounded-full' />
+          <Image src={authorImage || "https://placehold.co/600x400"} alt="placeholder" width={48} height={48} className='rounded-full' />
         </Link>
       </div>
 
