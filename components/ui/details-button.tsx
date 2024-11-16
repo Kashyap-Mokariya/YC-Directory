@@ -1,6 +1,8 @@
 'use client'
 import React from 'react';
 import styled from 'styled-components';
+import dynamic from 'next/dynamic';
+
 
 interface DetailsButtonProps {
     children: React.ReactNode;
@@ -50,4 +52,6 @@ const StyledWrapper = styled.div`
     transform: translateY(0px);
   }`;
 
-export default DetailsButton;
+// export default DetailsButton;
+
+export default dynamic(() => Promise.resolve(DetailsButton), { ssr: false });
