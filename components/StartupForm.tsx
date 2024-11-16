@@ -12,6 +12,7 @@ import { z } from 'zod'
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
 import { createPitch } from "@/lib/actions"
+import { Skeleton } from "./ui/skeleton"
 
 const StartupForm = () => {
 
@@ -174,7 +175,7 @@ const StartupForm = () => {
 
 // export default StartupForm
 
-export default dynamic(() => Promise.resolve(StartupForm), { ssr: false })
+export default dynamic(() => Promise.resolve(StartupForm), { ssr: false, loading: () => <Skeleton className='view_skeleton' /> })
 
 // "use client";
 
