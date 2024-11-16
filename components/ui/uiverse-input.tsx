@@ -15,9 +15,10 @@ const UiverseInput: React.FC<UiverseInputProps> = ({children}) =>{
 
 const StyledWrapper = styled.div`
   .input {
-    font-family: "SF Pro";
+    font-family: "work-sans";
     max-width: 900px;
-    min-width: 500px;
+    min-width: 600px;
+    min-height: 60px;
     padding: 0.875rem;
     font-size: 1rem;
     border: 1.5px solid #000;

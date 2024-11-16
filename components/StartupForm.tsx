@@ -151,7 +151,7 @@ const StartupForm = () => {
           id="pitch"
           preview="edit"
           height={300}
-          style={{ borderRadius: 20, overflow: "hidden", marginTop: 8 }}
+          style={{ borderRadius: 20, overflow: "hidden", marginTop: 8, width: 600 }}
           textareaProps={{
             placeholder: "Briefly Describe your idea and what problem it solves"
           }}
