@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import dynamic from 'next/dynamic';
 
 interface LoginButtonProps {
     children: React.ReactNode;
@@ -58,4 +59,6 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export default LoginButton;
+// export default LoginButton;
+
+export default dynamic(() => Promise.resolve(LoginButton), { ssr: false });
