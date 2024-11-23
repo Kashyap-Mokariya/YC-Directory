@@ -9,12 +9,16 @@ import markdownit from "markdown-it"
 import { Skeleton } from '@/components/ui/skeleton'
 import View from '@/components/View'
 import StartupCard, { StartupTypeCard } from '@/components/StartupCard'
+import { auth } from '@/auth'
+import DeleteButton from '@/components/ui/delete-button'
 
 export const experimental_ppr = true
 
 const Page = async ({ params }: {
   params: Promise<{ id: string }>
 }) => {
+
+  const session = await auth()
 
   const md = markdownit()
 
@@ -99,6 +103,12 @@ const Page = async ({ params }: {
                 </p>
               )
           }
+
+          {/* {
+            session?.id == authorId ? (
+              <DeleteButton />
+            ) : "Invalid"
+          } */}
 
           <hr className='divider' />
 
