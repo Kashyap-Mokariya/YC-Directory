@@ -33,7 +33,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
                         alt="profile image"
                         width={220}
                         height={220}
-                        className="profile_image"
+                        className="profile_image object-cover aspect-square"
                     />
 
                     <p className="text-30-extrabold mt-7 text-center">
